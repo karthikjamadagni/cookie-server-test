@@ -27,7 +27,7 @@ app.use(urlencoded({ extended: true }));
 app.use(cors(corsOptions))
 app.use(cookieParser());
 
-app.use(cors({credentials: true));
+app.use(cors({credentials: true});
 
 app.all('/login', async (req, res) => {
     try{
