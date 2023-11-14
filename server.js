@@ -30,7 +30,8 @@ app.use(cookieParser());
 // app.use(cors());
 
 app.all('/login', async (req, res) => {
-    const httponlyCookie = req.cookies['token'];
+    try{
+        const httponlyCookie = req.cookies['token'];
     console.log("The http only cookie: ", httponlyCookie);
     const { x, y } = req.body;
     console.log(x, y);
@@ -44,6 +45,10 @@ app.all('/login', async (req, res) => {
         secure: true,
         expires: new Date(new Date().getTime() + 30 * 1000),
     }).send("Hello there");
+    }
+    catch(err) {
+        console.log(err);
+    }
 
 })
 
