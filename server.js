@@ -41,7 +41,7 @@ app.all('/login', async (req, res) => {
         sameSite: 'strict',
         path: '/',
         httpOnly: true,
-        secure: false,
+        secure: true,
         expires: new Date(new Date().getTime() + 30 * 1000),
     }).send("Hello there");
 
