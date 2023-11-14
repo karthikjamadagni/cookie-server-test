@@ -5,19 +5,19 @@ dotenv.config();
 import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
 
-//const whitelist = ['http://127.0.0.1:5173', 'http://localhost:5173', 'https://mycookie-test.netlify.app/'];
+const whitelist = ['http://127.0.0.1:5173', 'http://localhost:5173', 'https://mycookie-test.netlify.app'];
 
-// const corsOptions = {
-//     credentials: true,
-//     origin: (origin, callback) => {
-//         if (whitelist.indexOf(origin) !== -1 || !origin) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error("Blocked by Cors policy"));
-//         }
-//     },
+const corsOptions = {
+    credentials: true,
+    origin: (origin, callback) => {
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error("Check the code again"));
+        }
+    },
 
-// }
+}
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.use(urlencoded({ extended: true }));
 //app.use(cors(corsOptions))
 app.use(cookieParser());
 
-app.use(cors({credentials: true}));
+// app.use(cors({credentials: true, origin: '*'}));
 
 app.all('/login', async (req, res) => {
     try{
