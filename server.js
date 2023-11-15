@@ -42,7 +42,7 @@ app.all('/login', async (req, res) => {
     const access_token = await jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
     console.log(access_token);
     res.cookie("token", access_token, {
-        sameSite: 'strict',
+        sameSite: 'none',
         path: '/',
         httpOnly: true,
         secure: true,
